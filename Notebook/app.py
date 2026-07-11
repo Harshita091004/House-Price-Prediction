@@ -2,9 +2,16 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Load model
-model = pickle.load(open('modelbest.pkl', 'rb'))
-scaler = pickle.load(open('scaler.pkl', 'rb'))
+from pathlib import Path
+import pickle
+
+BASE_DIR = Path(__file__).parent
+
+with open(BASE_DIR / "modelbest.pkl", "rb") as f:
+    model = pickle.load(f)
+
+with open(BASE_DIR / "scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
 
 # Title
 st.set_page_config(page_title="House Price Predictor", page_icon="🏠")
